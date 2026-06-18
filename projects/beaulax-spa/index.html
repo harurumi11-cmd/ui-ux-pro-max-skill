@@ -67,9 +67,77 @@
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
   }
+  .plumeria {
+    position: absolute;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .plumeria svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 </style>
 </head>
 <body class="bg-ink text-cream font-sans antialiased">
+
+<!-- Plumeria SVG sprite sheet (hidden, defines reusable flower symbols in a few colorways) -->
+<svg width="0" height="0" style="position:absolute;overflow:hidden" aria-hidden="true">
+  <defs>
+    <!-- Coral / sunset plumeria -->
+    <symbol id="plumeria-coral" viewBox="0 0 120 120">
+      <g>
+        <path d="M60 60 C60 60 38 18 60 8 C82 18 60 60 60 60 Z" fill="#F6A89B" opacity="0.92"/>
+        <path d="M60 60 C60 60 18 50 8 28 C30 18 60 60 60 60 Z" fill="#F0867A" opacity="0.9"/>
+        <path d="M60 60 C60 60 18 70 8 92 C30 102 60 60 60 60 Z" fill="#F6A89B" opacity="0.92"/>
+        <path d="M60 60 C60 60 38 102 60 112 C82 102 60 60 60 60 Z" fill="#EE7568" opacity="0.9"/>
+        <path d="M60 60 C60 60 102 70 112 92 C90 102 60 60 60 60 Z" fill="#F6A89B" opacity="0.92"/>
+        <path d="M60 60 C60 60 102 50 112 28 C90 18 60 60 60 60 Z" fill="#F0867A" opacity="0.9"/>
+        <circle cx="60" cy="60" r="9" fill="#F7C948"/>
+        <circle cx="60" cy="60" r="4" fill="#E8A317"/>
+      </g>
+    </symbol>
+    <!-- Soft pink plumeria -->
+    <symbol id="plumeria-pink" viewBox="0 0 120 120">
+      <g>
+        <path d="M60 60 C60 60 36 16 60 6 C84 16 60 60 60 60 Z" fill="#F6D4DE" opacity="0.95"/>
+        <path d="M60 60 C60 60 16 48 6 26 C28 14 60 60 60 60 Z" fill="#EFAFC4" opacity="0.92"/>
+        <path d="M60 60 C60 60 16 72 6 94 C28 106 60 60 60 60 Z" fill="#F6D4DE" opacity="0.95"/>
+        <path d="M60 60 C60 60 36 104 60 114 C84 104 60 60 60 60 Z" fill="#E892AC" opacity="0.92"/>
+        <path d="M60 60 C60 60 104 72 114 94 C92 106 60 60 60 60 Z" fill="#F6D4DE" opacity="0.95"/>
+        <path d="M60 60 C60 60 104 48 114 26 C92 14 60 60 60 60 Z" fill="#EFAFC4" opacity="0.92"/>
+        <circle cx="60" cy="60" r="9" fill="#FFD76A"/>
+        <circle cx="60" cy="60" r="4" fill="#E8A317"/>
+      </g>
+    </symbol>
+    <!-- White / gold-edged plumeria -->
+    <symbol id="plumeria-cream" viewBox="0 0 120 120">
+      <g>
+        <path d="M60 60 C60 60 40 18 60 8 C80 18 60 60 60 60 Z" fill="#FDF7EA" opacity="0.95" stroke="#C9AC79" stroke-width="0.6"/>
+        <path d="M60 60 C60 60 18 50 8 28 C30 18 60 60 60 60 Z" fill="#FBF1DC" opacity="0.93" stroke="#C9AC79" stroke-width="0.6"/>
+        <path d="M60 60 C60 60 18 70 8 92 C30 102 60 60 60 60 Z" fill="#FDF7EA" opacity="0.95" stroke="#C9AC79" stroke-width="0.6"/>
+        <path d="M60 60 C60 60 40 102 60 112 C80 102 60 60 60 60 Z" fill="#FBF1DC" opacity="0.93" stroke="#C9AC79" stroke-width="0.6"/>
+        <path d="M60 60 C60 60 102 70 112 92 C90 102 60 60 60 60 Z" fill="#FDF7EA" opacity="0.95" stroke="#C9AC79" stroke-width="0.6"/>
+        <path d="M60 60 C60 60 102 50 112 28 C90 18 60 60 60 60 Z" fill="#FBF1DC" opacity="0.93" stroke="#C9AC79" stroke-width="0.6"/>
+        <circle cx="60" cy="60" r="9" fill="#F2B84B"/>
+        <circle cx="60" cy="60" r="4" fill="#AD8A52"/>
+      </g>
+    </symbol>
+    <!-- Yellow / lemon plumeria -->
+    <symbol id="plumeria-yellow" viewBox="0 0 120 120">
+      <g>
+        <path d="M60 60 C60 60 38 18 60 8 C82 18 60 60 60 60 Z" fill="#FBE7A8" opacity="0.95"/>
+        <path d="M60 60 C60 60 18 50 8 28 C30 18 60 60 60 60 Z" fill="#F6D67E" opacity="0.92"/>
+        <path d="M60 60 C60 60 18 70 8 92 C30 102 60 60 60 60 Z" fill="#FBE7A8" opacity="0.95"/>
+        <path d="M60 60 C60 60 38 102 60 112 C82 102 60 60 60 60 Z" fill="#F0C25C" opacity="0.92"/>
+        <path d="M60 60 C60 60 102 70 112 92 C90 102 60 60 60 60 Z" fill="#FBE7A8" opacity="0.95"/>
+        <path d="M60 60 C60 60 102 50 112 28 C90 18 60 60 60 60 Z" fill="#F6D67E" opacity="0.92"/>
+        <circle cx="60" cy="60" r="9" fill="#E8895A"/>
+        <circle cx="60" cy="60" r="4" fill="#C96A3E"/>
+      </g>
+    </symbol>
+  </defs>
+</svg>
 
 <!-- NAV -->
 <header id="nav" class="fixed top-0 left-0 w-full z-50 transition-colors duration-500">
@@ -119,11 +187,11 @@
   <div class="relative z-10 text-center px-6 max-w-3xl">
     <p class="fade-up text-gold text-xs md:text-sm tracking-[0.4em] uppercase mb-6">Private Facial &amp; Body Salon</p>
     <h1 class="fade-up font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.15] mb-6">
-      その肌が、<br class="hidden md:block">
-      <span class="gold-gradient-text italic">隠していた美しさ</span>を纏う夜。
+      一日の終わりに、<br class="hidden md:block">
+      <span class="gold-gradient-text italic">がんばった私へのご褒美</span>を。
     </h1>
     <p class="fade-up text-cream/70 text-sm md:text-base leading-relaxed mb-10 max-w-xl mx-auto">
-      確かな技術と、一人ひとりに向き合う丁寧な施術。BEAULAX SPAは、鏡を見るたび自信が生まれる肌へ、あなたを導きます。
+      お仕事帰りでもゆったり間に合う、働く女性のための癒しのプライベートサロン。確かな技術と、一人ひとりに寄り添う丁寧な施術。BEAULAX SPAは、「仕事帰りに癒されたい」「遅い時間しか自分の時間が作れない」という忙しい女性のためのサロンです。夜23時まで営業しているので、一日の終わりにいつでもお気軽に羽を伸ばしにいらしてください。
     </p>
     <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center">
       <a href="#reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:bg-gold-light transition-colors duration-300">
@@ -139,6 +207,12 @@
     <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
     <span class="w-px h-10 bg-gradient-to-b from-gold to-transparent"></span>
   </div>
+
+  <!-- Decorative plumeria accents -->
+  <div class="plumeria hidden sm:block" style="top:8%; left:4%; width:90px; height:90px; opacity:0.5; transform:rotate(-12deg);"><svg><use href="#plumeria-coral"/></svg></div>
+  <div class="plumeria hidden sm:block" style="top:18%; left:9%; width:48px; height:48px; opacity:0.4; transform:rotate(20deg);"><svg><use href="#plumeria-cream"/></svg></div>
+  <div class="plumeria hidden sm:block" style="top:10%; right:5%; width:100px; height:100px; opacity:0.5; transform:rotate(15deg);"><svg><use href="#plumeria-pink"/></svg></div>
+  <div class="plumeria hidden sm:block" style="top:22%; right:11%; width:54px; height:54px; opacity:0.4; transform:rotate(-18deg);"><svg><use href="#plumeria-yellow"/></svg></div>
 </section>
 
 <!-- TRUST TICKER -->
@@ -159,7 +233,9 @@
 </div>
 
 <!-- CONCEPT -->
-<section id="concept" class="relative py-28 px-6 lg:px-10 bg-ink">
+<section id="concept" class="relative py-28 px-6 lg:px-10 bg-ink overflow-hidden">
+  <div class="plumeria hidden md:block" style="top:6%; left:2%; width:70px; height:70px; opacity:0.35; transform:rotate(8deg);"><svg><use href="#plumeria-pink"/></svg></div>
+  <div class="plumeria hidden md:block" style="bottom:8%; right:3%; width:80px; height:80px; opacity:0.3; transform:rotate(-22deg);"><svg><use href="#plumeria-coral"/></svg></div>
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
     <div class="fade-up relative">
       <div class="absolute -top-6 -left-6 w-24 h-24 border border-gold/40"></div>
@@ -220,7 +296,9 @@
 </section>
 
 <!-- MENU -->
-<section id="menu" class="relative py-28 px-6 lg:px-10 bg-ink">
+<section id="menu" class="relative py-28 px-6 lg:px-10 bg-ink overflow-hidden">
+  <div class="plumeria hidden md:block" style="top:4%; right:4%; width:64px; height:64px; opacity:0.32; transform:rotate(-14deg);"><svg><use href="#plumeria-yellow"/></svg></div>
+  <div class="plumeria hidden md:block" style="top:46%; left:1%; width:56px; height:56px; opacity:0.28; transform:rotate(25deg);"><svg><use href="#plumeria-cream"/></svg></div>
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Menu</p>
@@ -375,7 +453,9 @@
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" class="relative py-28 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
+<section id="gallery" class="relative py-28 px-6 lg:px-10 bg-charcoal border-t border-gold/10 overflow-hidden">
+  <div class="plumeria hidden md:block" style="top:5%; left:3%; width:72px; height:72px; opacity:0.3; transform:rotate(-10deg);"><svg><use href="#plumeria-coral"/></svg></div>
+  <div class="plumeria hidden md:block" style="bottom:4%; right:3%; width:66px; height:66px; opacity:0.3; transform:rotate(16deg);"><svg><use href="#plumeria-pink"/></svg></div>
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Gallery</p>
@@ -431,7 +511,9 @@
 </section>
 
 <!-- FAQ -->
-<section id="faq" class="relative py-28 px-6 lg:px-10 bg-ink">
+<section id="faq" class="relative py-28 px-6 lg:px-10 bg-ink overflow-hidden">
+  <div class="plumeria hidden md:block" style="top:6%; right:6%; width:60px; height:60px; opacity:0.3; transform:rotate(18deg);"><svg><use href="#plumeria-yellow"/></svg></div>
+  <div class="plumeria hidden md:block" style="bottom:8%; left:5%; width:52px; height:52px; opacity:0.28; transform:rotate(-20deg);"><svg><use href="#plumeria-cream"/></svg></div>
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">FAQ</p>
@@ -498,7 +580,8 @@
 </section>
 
 <!-- ACCESS -->
-<section id="access" class="relative py-24 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
+<section id="access" class="relative py-24 px-6 lg:px-10 bg-charcoal border-t border-gold/10 overflow-hidden">
+  <div class="plumeria hidden md:block" style="top:4%; left:2%; width:64px; height:64px; opacity:0.3; transform:rotate(12deg);"><svg><use href="#plumeria-pink"/></svg></div>
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
     <div class="fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Access</p>
@@ -542,7 +625,8 @@
 </section>
 
 <!-- FOOTER -->
-<footer class="bg-ink border-t border-gold/10 py-12 px-6 lg:px-10">
+<footer class="relative bg-ink border-t border-gold/10 py-12 px-6 lg:px-10 overflow-hidden">
+  <div class="plumeria hidden sm:block" style="bottom:6%; right:3%; width:56px; height:56px; opacity:0.25; transform:rotate(-15deg);"><svg><use href="#plumeria-coral"/></svg></div>
   <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
     <a href="#top" class="font-serif text-xl tracking-[0.18em] gold-gradient-text">BEAULAX SPA</a>
     <a href="https://www.instagram.com/beaulax.spa/" target="_blank" rel="noopener" aria-label="Instagram" class="text-cream/50 hover:text-gold transition-colors">
