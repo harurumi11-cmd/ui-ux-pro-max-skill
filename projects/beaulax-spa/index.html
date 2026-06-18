@@ -79,12 +79,30 @@
       <a href="#concept" class="hover:text-gold transition-colors">コンセプト</a>
       <a href="#strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
       <a href="#menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#gallery" class="hover:text-gold transition-colors">ギャラリー</a>
       <a href="#voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#faq" class="hover:text-gold transition-colors">FAQ</a>
       <a href="#access" class="hover:text-gold transition-colors">アクセス</a>
     </nav>
     <a href="#reserve" class="hidden md:inline-flex items-center gap-2 border border-gold/60 text-gold text-xs tracking-[0.2em] uppercase px-6 py-3 hover:bg-gold hover:text-ink transition-all duration-300">
       ご予約はこちら
     </a>
+    <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="lg:hidden text-gold p-2">
+      <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-ink/95 backdrop-blur-md border-t border-gold/10 px-6 py-8">
+    <nav class="flex flex-col gap-6 text-sm tracking-[0.2em] uppercase text-cream/80">
+      <a href="#concept" class="hover:text-gold transition-colors">コンセプト</a>
+      <a href="#strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
+      <a href="#menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#gallery" class="hover:text-gold transition-colors">ギャラリー</a>
+      <a href="#voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#faq" class="hover:text-gold transition-colors">FAQ</a>
+      <a href="#access" class="hover:text-gold transition-colors">アクセス</a>
+      <a href="#reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-ink px-6 py-4 mt-2">ご予約はこちら</a>
+    </nav>
   </div>
 </header>
 
@@ -261,6 +279,22 @@
   </div>
 </section>
 
+<!-- GALLERY -->
+<section id="gallery" class="relative py-28 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Gallery</p>
+      <h2 class="font-serif text-3xl md:text-4xl">空間とお肌の変化をご覧ください</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop" alt="サロン内観" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=800&auto=format&fit=crop" alt="フェイシャル施術" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop" alt="施術後の肌" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop" alt="プライベート個室" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+    </div>
+  </div>
+</section>
+
 <!-- VOICE -->
 <section id="voice" class="relative py-28 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
   <div class="max-w-6xl mx-auto">
@@ -297,6 +331,46 @@
       <span class="inline-flex items-center gap-2 text-gold text-sm tracking-wider">
         <span class="text-lg">★★★★★</span> Google クチコミ高評価多数獲得中
       </span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="relative py-28 px-6 lg:px-10 bg-ink">
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">FAQ</p>
+      <h2 class="font-serif text-3xl md:text-4xl">よくあるご質問</h2>
+    </div>
+    <div class="space-y-px bg-gold/10">
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          初めてでも安心して通えますか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">はい。初回はカウンセリングからじっくり行い、お肌の状態やお悩みをお伺いした上で施術プランをご提案します。不安な点はその場で何でもご相談ください。</p>
+      </details>
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          どのくらいの頻度で通うのが理想ですか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">肌の生まれ変わるサイクルに合わせ、3〜4週に1度のご来店がおすすめです。お悩みやご予算に合わせて最適なペースをご提案します。</p>
+      </details>
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          施術後に気を付けることはありますか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">施術直後はお肌が敏感な状態になるため、当日は紫外線対策と保湿を徹底してください。アフターケアの方法も施術後に詳しくご説明します。</p>
+      </details>
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          予約の変更・キャンセルはできますか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">ご予約の2日前までであれば、お電話・LINEにて無料で変更・キャンセルが可能です。それ以降の変更は別途キャンセルポリシーが適用されますのでご了承ください。</p>
+      </details>
     </div>
   </div>
 </section>
@@ -388,6 +462,26 @@
     } else {
       nav.classList.remove('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
     }
+  });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
   });
 </script>
 </body>
