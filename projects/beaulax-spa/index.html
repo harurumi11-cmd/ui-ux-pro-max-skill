@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEAULAX SPA | 一人ひとりの美しさを引き出す、プライベートフェイシャル&ボディサロン</title>
+<meta name="description" content="BEAULAX SPAは、丁寧な施術と確かな技術で肌の変化を実感できるプライベートサロン。フェイシャル・リフトアップ・ボディケアで、あなたの「なりたい美しさ」へ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0c0a09',
+          charcoal: '#1c1917',
+          stone: '#44403c',
+          gold: '#c9a23f',
+          'gold-light': '#e6c869',
+          cream: '#faf8f5',
+        },
+        fontFamily: {
+          serif: ['Cormorant', 'serif'],
+          sans: ['Montserrat', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #0c0a09; }
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #e6c869 0%, #c9a23f 50%, #8a6d1f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hairline-gold {
+    background: linear-gradient(90deg, transparent, #c9a23f, transparent);
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .card-glow:hover {
+    box-shadow: 0 0 40px rgba(201,162,63,0.18);
+  }
+  .ken-burns {
+    animation: kenburns 18s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns {
+    0% { transform: scale(1) translate(0,0); }
+    100% { transform: scale(1.12) translate(-1%, -1%); }
+  }
+  .ticker {
+    animation: ticker 30s linear infinite;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body class="bg-ink text-cream font-sans antialiased">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 w-full z-50 transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <a href="#top" class="font-serif text-2xl tracking-[0.18em] gold-gradient-text">BEAULAX <span class="text-cream/80 text-sm tracking-[0.3em] font-sans align-middle">SPA</span></a>
+    <nav class="hidden lg:flex items-center gap-10 text-xs tracking-[0.2em] uppercase text-cream/70">
+      <a href="#concept" class="hover:text-gold transition-colors">コンセプト</a>
+      <a href="#strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
+      <a href="#menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#access" class="hover:text-gold transition-colors">アクセス</a>
+    </nav>
+    <a href="#reserve" class="hidden md:inline-flex items-center gap-2 border border-gold/60 text-gold text-xs tracking-[0.2em] uppercase px-6 py-3 hover:bg-gold hover:text-ink transition-all duration-300">
+      ご予約はこちら
+    </a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative h-screen min-h-[640px] w-full overflow-hidden flex items-center justify-center">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop"
+         alt="ラグジュアリーなスパ空間"
+         class="w-full h-full object-cover ken-burns opacity-70">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/50 to-ink"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-ink/60"></div>
+  </div>
+
+  <div class="relative z-10 text-center px-6 max-w-3xl">
+    <p class="fade-up text-gold text-xs md:text-sm tracking-[0.4em] uppercase mb-6">Private Facial &amp; Body Salon</p>
+    <h1 class="fade-up font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.15] mb-6">
+      その肌が、<br class="hidden md:block">
+      <span class="gold-gradient-text italic">隠していた美しさ</span>を纏う夜。
+    </h1>
+    <p class="fade-up text-cream/70 text-sm md:text-base leading-relaxed mb-10 max-w-xl mx-auto">
+      確かな技術と、一人ひとりに向き合う丁寧な施術。BEAULAX SPAは、鏡を見るたび自信が生まれる肌へ、あなたを導きます。
+    </p>
+    <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-ink text-xs tracking-[0.2em] uppercase px-10 py-4 hover:bg-gold-light transition-colors duration-300">
+        今すぐ予約する
+      </a>
+      <a href="#menu" class="inline-flex justify-center items-center gap-2 border border-cream/30 text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:border-gold hover:text-gold transition-colors duration-300">
+        メニューを見る
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/50">
+    <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+    <span class="w-px h-10 bg-gradient-to-b from-gold to-transparent"></span>
+  </div>
+</section>
+
+<!-- TRUST TICKER -->
+<div class="bg-charcoal border-y border-gold/20 py-4 overflow-hidden">
+  <div class="flex whitespace-nowrap ticker">
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">★★★★★ Google クチコミ高評価多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">施術後の変化に感動の声多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">通いやすい完全予約制プライベートサロン</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">★★★★★ Google クチコミ高評価多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">施術後の変化に感動の声多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">通いやすい完全予約制プライベートサロン</span>
+  </div>
+</div>
+
+<!-- CONCEPT -->
+<section id="concept" class="relative py-28 px-6 lg:px-10 bg-ink">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="fade-up relative">
+      <div class="absolute -top-6 -left-6 w-24 h-24 border border-gold/40"></div>
+      <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=1400&auto=format&fit=crop"
+           alt="フェイシャル施術の様子" class="relative w-full h-[480px] object-cover">
+    </div>
+    <div class="fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Concept</p>
+      <h2 class="font-serif text-3xl md:text-4xl leading-snug mb-6">
+        「自宅から通える距離」に、<br>
+        本物の<span class="gold-gradient-text italic">リフトアップ</span>を。
+      </h2>
+      <p class="text-cream/70 leading-relaxed mb-6">
+        BEAULAX SPAが大切にしているのは、施術の前と後で「違いに感動できる」結果と、毎回しっかり向き合ってくれる丁寧な接客です。お客様の美容の悩みに真剣に耳を傾け、肌質・お悩みに合わせたオーダーメイドの施術をご提案します。
+      </p>
+      <p class="text-cream/70 leading-relaxed mb-10">
+        一度きりの非日常ではなく、通うたびに肌が応えてくれる――。そんな信頼関係を、私たちは一人ひとりのお客様と築いていきます。
+      </p>
+      <div class="hairline-gold h-px w-24 mb-10"></div>
+      <p class="font-serif italic text-xl text-cream/90">
+        "施術前と施術後の違いに大満足し感動しています。"
+      </p>
+      <p class="text-xs text-cream/40 mt-3 tracking-wider">— Google クチコミより</p>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section id="strengths" class="relative py-28 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Why Beaulax</p>
+      <h2 class="font-serif text-3xl md:text-4xl">お客様に長く愛され続ける、4つの理由</h2>
+    </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gold/10">
+      <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+        <span class="font-serif text-5xl text-gold/70">01</span>
+        <h3 class="font-serif text-xl mt-6 mb-3">丁寧な施術力</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">フェイシャルもマッサージも、一人ひとりの肌状態に合わせた丁寧な施術。「とても良いセラピスト」とのお声を多数いただいています。</p>
+      </div>
+      <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+        <span class="font-serif text-5xl text-gold/70">02</span>
+        <h3 class="font-serif text-xl mt-6 mb-3">実感できる変化</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">施術前と施術後で違いに感動するお客様多数。肌のリフトアップを、確かな手技でお届けします。</p>
+      </div>
+      <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+        <span class="font-serif text-5xl text-gold/70">03</span>
+        <h3 class="font-serif text-xl mt-6 mb-3">的確な美容アドバイス</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">お悩みにしっかり寄り添い、自宅でのケア方法までアドバイス。施術だけで終わらない、本気の美容サポート。</p>
+      </div>
+      <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+        <span class="font-serif text-5xl text-gold/70">04</span>
+        <h3 class="font-serif text-xl mt-6 mb-3">通いやすい距離感</h3>
+        <p class="text-cream/60 text-sm leading-relaxed">「自宅から通える距離」にある本格スパ。完全プライベートな空間で、無理なく美容習慣を続けられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="relative py-28 px-6 lg:px-10 bg-ink">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Menu</p>
+      <h2 class="font-serif text-3xl md:text-4xl">あなたの「なりたい姿」へ導くメニュー</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <div class="fade-up group relative overflow-hidden border border-gold/15 hover:border-gold/50 transition-colors duration-500">
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=1200&auto=format&fit=crop"
+               alt="フェイシャルリフトコース" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-serif text-2xl mb-2">小顔リフトフェイシャル</h3>
+          <p class="text-cream/60 text-sm leading-relaxed mb-6">むくみ・たるみにアプローチするハンドリンパと美容機器を組み合わせ、引き上がった印象的な小顔へ。</p>
+          <div class="flex items-end justify-between">
+            <span class="font-serif text-2xl text-gold">¥14,800<span class="text-xs text-cream/50">〜 / 80分</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up group relative overflow-hidden border border-gold/40 hover:border-gold transition-colors duration-500 lg:-translate-y-4">
+        <span class="absolute top-4 right-4 z-10 bg-gold text-ink text-[10px] tracking-[0.2em] uppercase px-3 py-1">人気No.1</span>
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=1200&auto=format&fit=crop"
+               alt="プレミアムボディスパ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-serif text-2xl mb-2 gold-gradient-text">BEAULAX シグネチャー</h3>
+          <p class="text-cream/60 text-sm leading-relaxed mb-6">フェイシャル×ボディの集中ケア。全身の巡りを整え、内側から輝く艶肌へ仕上げる贅沢な120分。</p>
+          <div class="flex items-end justify-between">
+            <span class="font-serif text-2xl text-gold">¥22,000<span class="text-xs text-cream/50"> / 120分</span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-up group relative overflow-hidden border border-gold/15 hover:border-gold/50 transition-colors duration-500">
+        <div class="relative h-72 overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1591343395082-e120087004b4?q=80&w=1200&auto=format&fit=crop"
+               alt="ボディマッサージ" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+          <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent"></div>
+        </div>
+        <div class="p-8">
+          <h3 class="font-serif text-2xl mb-2">ボディデトックスマッサージ</h3>
+          <p class="text-cream/60 text-sm leading-relaxed mb-6">凝りと老廃物を流すリンパドレナージュで、しなやかで美しいボディラインへ。</p>
+          <div class="flex items-end justify-between">
+            <span class="font-serif text-2xl text-gold">¥12,800<span class="text-xs text-cream/50">〜 / 60分</span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="fade-up text-center text-cream/40 text-xs mt-10 tracking-wider">表示価格はすべて税込です。初回限定のお得なトライアルプランもご用意しています。</p>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section id="voice" class="relative py-28 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Voice</p>
+      <h2 class="font-serif text-3xl md:text-4xl">お客様からの声</h2>
+      <p class="text-cream/50 text-sm mt-4">Google クチコミより</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「フェイシャル、マッサージとても丁寧に施術してくれて毎回満足しています。美容の悩みもしっかりアドバイスしてくれます。とても良いセラピストです。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">zandra nakamura様</p>
+      </div>
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「フェイシャル2回目ですが、施術前と施術後の違いに大満足し感動しています。お肌のリフトアップが自宅から通える距離にあるなんて。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">M123 “123”様・ローカルガイド</p>
+      </div>
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「サービスも丁寧で安心して通えるサロンです。スタッフの方の対応にいつも感謝しています。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">織間春奈様</p>
+      </div>
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「345枚もの写真を残したくなるほど、毎回の変化が楽しみなサロンです。いつもありがとうございます。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">M Nao様・ローカルガイド</p>
+      </div>
+    </div>
+
+    <div class="fade-up mt-12 text-center">
+      <span class="inline-flex items-center gap-2 text-gold text-sm tracking-wider">
+        <span class="text-lg">★★★★★</span> Google クチコミ高評価多数獲得中
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE / CTA -->
+<section id="reserve" class="relative py-32 px-6 lg:px-10 overflow-hidden">
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=2000&auto=format&fit=crop"
+         alt="プライベート個室" class="w-full h-full object-cover opacity-40">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink via-ink/80 to-ink"></div>
+  </div>
+  <div class="relative z-10 max-w-3xl mx-auto text-center fade-up">
+    <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Reservation</p>
+    <h2 class="font-serif text-3xl md:text-5xl mb-6 leading-snug">
+      鏡の前で、新しい自分に<br>会いに来てください。
+    </h2>
+    <p class="text-cream/70 mb-10 leading-relaxed">
+      完全予約制のプライベートサロンです。ご希望のお時間が埋まりやすいため、お早めのご予約をお勧めします。初めての方には無料カウンセリングもご用意しております。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+      <a href="tel:0000000000" class="inline-flex justify-center items-center gap-2 bg-gold text-ink text-xs tracking-[0.2em] uppercase px-10 py-4 hover:bg-gold-light transition-colors duration-300">
+        電話で予約する
+      </a>
+      <a href="#" class="inline-flex justify-center items-center gap-2 border border-cream/30 text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:border-gold hover:text-gold transition-colors duration-300">
+        LINEで予約する
+      </a>
+    </div>
+    <p class="text-cream/40 text-xs tracking-wider">営業時間 10:00 - 21:00（最終受付 19:30）｜不定休</p>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="relative py-24 px-6 lg:px-10 bg-charcoal border-t border-gold/10">
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+    <div class="fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Access</p>
+      <h2 class="font-serif text-3xl mb-8">BEAULAX SPA</h2>
+      <dl class="space-y-6 text-sm text-cream/70">
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">所在地</dt>
+          <dd>〇〇県〇〇市〇〇 0-0-0 〇〇ビル 2F</dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">営業時間</dt>
+          <dd>10:00 - 21:00（最終受付 19:30）</dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">定休日</dt>
+          <dd>不定休</dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">電話番号</dt>
+          <dd>000-0000-0000</dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">アクセス</dt>
+          <dd>〇〇駅 〇〇口より徒歩5分／提携駐車場あり</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="fade-up h-72 lg:h-auto bg-ink/60 border border-gold/10 flex items-center justify-center text-cream/30 text-sm tracking-wider">
+      地図を表示する予定地
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink border-t border-gold/10 py-12 px-6 lg:px-10">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <a href="#top" class="font-serif text-xl tracking-[0.18em] gold-gradient-text">BEAULAX SPA</a>
+    <p class="text-cream/40 text-xs tracking-wider">&copy; 2026 BEAULAX SPA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
+    } else {
+      nav.classList.remove('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
+    }
+  });
+</script>
+</body>
+</html>
