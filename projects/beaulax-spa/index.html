@@ -41,6 +41,24 @@
   .hairline-gold {
     background: linear-gradient(90deg, transparent, #AD8A52, transparent);
   }
+  .heading-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .heading-ornament .hairline-gold {
+    height: 1px;
+    width: 36px;
+  }
+  .corner-frame {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
   .fade-up {
     opacity: 0;
     transform: translateY(24px);
@@ -185,6 +203,11 @@
     </div>
     <div class="fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Concept</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
       <h2 class="font-serif text-3xl md:text-4xl leading-snug mb-6">
         「自宅から通える距離」に、<br>
         本物の<span class="gold-gradient-text italic">リフトアップ</span>を。
@@ -210,6 +233,11 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Why Beaulax</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
       <h2 class="font-serif text-3xl md:text-4xl">お客様に長く愛され続ける、4つの理由</h2>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-gold/10">
@@ -240,9 +268,21 @@
 <!-- MENU -->
 <section id="menu" class="relative py-28 px-6 lg:px-10 bg-ink texture-grain overflow-hidden">
 
+  <svg class="corner-frame top-6 left-6" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M2 48V2H48"/>
+  </svg>
+  <svg class="corner-frame bottom-6 right-6" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M46 0V46H0"/>
+  </svg>
+
   <div class="max-w-5xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Menu</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
       <h2 class="font-serif text-3xl md:text-4xl">あなたの「なりたい姿」へ導くメニュー</h2>
     </div>
 
@@ -399,6 +439,11 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Gallery</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
       <h2 class="font-serif text-3xl md:text-4xl">空間とお肌の変化をご覧ください</h2>
     </div>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -416,6 +461,11 @@
   <div class="max-w-6xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Voice</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
       <h2 class="font-serif text-3xl md:text-4xl">お客様からの声</h2>
       <p class="text-cream/50 text-sm mt-4">Google クチコミより</p>
     </div>
@@ -457,6 +507,11 @@
   <div class="max-w-3xl mx-auto">
     <div class="text-center mb-16 fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">FAQ</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
       <h2 class="font-serif text-3xl md:text-4xl">よくあるご質問</h2>
     </div>
     <div class="space-y-px bg-gold/10">
@@ -495,6 +550,13 @@
 <!-- RESERVE / CTA -->
 <section id="reserve" class="relative py-32 px-6 lg:px-10 overflow-hidden">
 
+  <svg class="corner-frame top-8 left-8 z-10" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M2 48V2H48"/>
+  </svg>
+  <svg class="corner-frame bottom-8 right-8 z-10" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M46 0V46H0"/>
+  </svg>
+
   <div class="absolute inset-0">
     <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=2000&auto=format&fit=crop"
          alt="プライベート個室" class="w-full h-full object-cover opacity-40">
@@ -502,6 +564,11 @@
   </div>
   <div class="relative z-10 max-w-3xl mx-auto text-center fade-up">
     <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Reservation</p>
+    <div class="heading-ornament">
+      <span class="hairline-gold h-px"></span>
+      <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+      <span class="hairline-gold h-px"></span>
+    </div>
     <h2 class="font-serif text-3xl md:text-5xl mb-6 leading-snug">
       鏡の前で、新しい自分に<br>会いに来てください。
     </h2>
@@ -526,6 +593,10 @@
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
     <div class="fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Access</p>
+      <div class="heading-ornament" style="justify-content: flex-start; margin-bottom: 12px;">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+      </div>
       <h2 class="font-serif text-3xl mb-8">BEAULAX SPA</h2>
       <dl class="space-y-6 text-sm text-cream/70">
         <div class="flex gap-6">
