@@ -197,11 +197,33 @@
 
   <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
     <div class="fade-up relative">
-      <div class="absolute -top-6 -left-6 w-24 h-24 border border-gold/40"></div>
-      <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=1400&auto=format&fit=crop"
-           alt="フェイシャル施術の様子" class="relative w-full h-[480px] object-cover rounded shadow-xl">
-      <img src="https://images.unsplash.com/photo-1611073615654-433a8a607df0?q=80&w=900&auto=format&fit=crop"
-           alt="アロマキャンドルとタオルが並ぶ癒しの空間" class="absolute -bottom-10 -right-8 w-40 h-40 md:w-52 md:h-52 object-cover rounded shadow-2xl border-4 border-ink">
+      <div class="absolute -top-6 -left-6 w-24 h-24 border border-gold/40 z-10 pointer-events-none"></div>
+      <!-- Before/After slider -->
+      <div id="ba-slider" class="relative w-full h-[480px] rounded shadow-xl overflow-hidden select-none cursor-col-resize"
+           data-before="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1400&auto=format&fit=crop"
+           data-after="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=1400&auto=format&fit=crop">
+        <!-- After (base layer) -->
+        <img id="ba-after" src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=1400&auto=format&fit=crop"
+             alt="施術後" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+        <!-- Before (clipped layer) -->
+        <div id="ba-before-wrap" class="absolute inset-0 overflow-hidden" style="width:50%">
+          <img id="ba-before" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1400&auto=format&fit=crop"
+               alt="施術前" class="absolute inset-0 w-full h-full object-cover pointer-events-none" style="width: var(--ba-full-w, 100%); max-width: none;">
+        </div>
+        <!-- Divider line -->
+        <div id="ba-line" class="absolute top-0 bottom-0 w-px bg-white/80 shadow-[0_0_6px_rgba(0,0,0,0.4)]" style="left:50%">
+          <!-- Handle -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center gap-1">
+            <svg class="w-4 h-4 text-cream/80" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M5 3l-3 5 3 5M11 3l3 5-3 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Labels -->
+        <span class="absolute top-4 left-4 text-[10px] tracking-[0.25em] uppercase text-white/90 bg-black/30 px-2 py-1 rounded pointer-events-none">Before</span>
+        <span class="absolute top-4 right-4 text-[10px] tracking-[0.25em] uppercase text-white/90 bg-black/30 px-2 py-1 rounded pointer-events-none">After</span>
+      </div>
+      <p class="text-cream/40 text-xs text-center mt-3 tracking-wider">← スライドして比較 →</p>
     </div>
     <div class="fade-up">
       <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Concept</p>
@@ -740,6 +762,41 @@
       menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
+
+  // ── Before/After slider ───────────────────────────────────────────
+  (function () {
+    const slider = document.getElementById('ba-slider');
+    if (!slider) return;
+    const beforeWrap = document.getElementById('ba-before-wrap');
+    const beforeImg  = document.getElementById('ba-before');
+    const line       = document.getElementById('ba-line');
+
+    function setPos(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      beforeWrap.style.width = pct + '%';
+      line.style.left = pct + '%';
+      // Keep before image full-width inside the clipped wrapper
+      beforeImg.style.width = (slider.offsetWidth / (pct / 100)) + 'px';
+    }
+
+    function getPercent(clientX) {
+      const rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    let dragging = false;
+    slider.addEventListener('mousedown', e => { dragging = true; setPos(getPercent(e.clientX)); });
+    window.addEventListener('mousemove', e => { if (dragging) setPos(getPercent(e.clientX)); });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    slider.addEventListener('touchstart', e => { dragging = true; setPos(getPercent(e.touches[0].clientX)); }, { passive: true });
+    window.addEventListener('touchmove', e => { if (dragging) setPos(getPercent(e.touches[0].clientX)); }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+
+    // Init after layout
+    window.addEventListener('load', () => setPos(50));
+    window.addEventListener('resize', () => setPos(parseFloat(line.style.left) || 50));
+  })();
 </script>
 </body>
 </html>
