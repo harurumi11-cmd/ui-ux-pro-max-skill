@@ -703,62 +703,17 @@
 </footer>
 
 <script>
-  // ── Page routing ──────────────────────────────────────────────────
-  const PAGES = ['top','concept','strengths','menu','gallery','voice','faq','reserve','access'];
-  const allSections = PAGES.map(id => document.getElementById(id)).filter(Boolean);
-  const footer = document.querySelector('footer');
-
-  function showPage(id) {
-    const target = PAGES.includes(id) ? id : 'top';
-    allSections.forEach(sec => {
-      const active = sec.id === target;
-      sec.style.display = active ? '' : 'none';
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
     });
-    footer.style.display = (target === 'access' || target === 'top') ? '' : 'none';
-    // Re-trigger fade-up for newly shown section
-    const sec = document.getElementById(target);
-    if (sec) {
-      sec.querySelectorAll('.fade-up:not(.in-view)').forEach(el => observer.observe(el));
-    }
-    window.scrollTo(0, 0);
-    // Nav background: always solid when not on top
-    if (target !== 'top') {
-      nav.classList.add('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
-    } else {
-      nav.classList.remove('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
-    }
-    // Update active link highlight
-    document.querySelectorAll('[data-nav-id]').forEach(a => {
-      a.classList.toggle('text-gold', a.dataset.navId === target);
-      a.classList.toggle('text-cream/70', a.dataset.navId !== target);
-    });
-    // Update URL hash without triggering scroll
-    history.replaceState(null, '', target === 'top' ? '#' : '#' + target);
-  }
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
 
-  // Intercept all internal anchor clicks
-  document.addEventListener('click', e => {
-    const a = e.target.closest('a[href^="#"]');
-    if (!a) return;
-    const id = a.getAttribute('href').replace('#', '') || 'top';
-    if (PAGES.includes(id)) {
-      e.preventDefault();
-      showPage(id);
-      closeMobileMenu();
-    }
-  });
-
-  // Handle browser back/forward
-  window.addEventListener('hashchange', () => {
-    const id = location.hash.replace('#', '') || 'top';
-    showPage(id);
-  });
-
-  // ── Scroll-based nav background (top page only) ───────────────────
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
-    const currentPage = location.hash.replace('#', '') || 'top';
-    if (currentPage !== 'top') return;
     if (window.scrollY > 40) {
       nav.classList.add('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
     } else {
@@ -766,27 +721,10 @@
     }
   });
 
-  // ── Fade-up observer ──────────────────────────────────────────────
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add('in-view');
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
-
-  // ── Mobile menu toggle ────────────────────────────────────────────
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('menu-icon-open');
   const iconClose = document.getElementById('menu-icon-close');
-
-  function closeMobileMenu() {
-    mobileMenu.classList.add('hidden');
-    iconOpen.classList.remove('hidden');
-    iconClose.classList.add('hidden');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-
   menuToggle.addEventListener('click', () => {
     const isOpen = !mobileMenu.classList.contains('hidden');
     mobileMenu.classList.toggle('hidden');
@@ -794,9 +732,14 @@
     iconClose.classList.toggle('hidden');
     menuToggle.setAttribute('aria-expanded', String(!isOpen));
   });
-
-  // ── Initial render ────────────────────────────────────────────────
-  showPage(location.hash.replace('#', '') || 'top');
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
 </script>
 </body>
 </html>
