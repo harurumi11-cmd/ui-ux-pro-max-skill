@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEAULAX SPA | 一人ひとりの美しさを引き出す、プライベートフェイシャル&ボディサロン</title>
+<meta name="description" content="BEAULAX SPAは、丁寧な施術と確かな技術で肌の変化を実感できるプライベートサロン。フェイシャル・リフトアップ・ボディケアで、あなたの「なりたい美しさ」へ。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#FAF3E4',
+          charcoal: '#F0E4CC',
+          stone: '#9C8F76',
+          gold: '#AD8A52',
+          'gold-light': '#C9AC79',
+          cream: '#332A1E',
+        },
+        fontFamily: {
+          serif: ['Cormorant', 'serif'],
+          sans: ['Montserrat', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background-color: #FAF3E4; }
+  .gold-gradient-text {
+    background: linear-gradient(135deg, #C9AC79 0%, #AD8A52 50%, #7A6038 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .hairline-gold {
+    background: linear-gradient(90deg, transparent, #AD8A52, transparent);
+  }
+  .heading-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .heading-ornament .hairline-gold {
+    height: 1px;
+    width: 36px;
+  }
+  .corner-frame {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+  }
+  .fade-up.in-view {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .card-glow:hover {
+    box-shadow: 0 0 40px rgba(201,162,63,0.18);
+  }
+  .ken-burns {
+    animation: kenburns 18s ease-in-out infinite alternate;
+  }
+  @keyframes kenburns {
+    0% { transform: scale(1) translate(0,0); }
+    100% { transform: scale(1.12) translate(-1%, -1%); }
+  }
+  .ticker {
+    animation: ticker 30s linear infinite;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .texture-grain {
+    position: relative;
+  }
+  .texture-grain::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.045;
+    mix-blend-mode: multiply;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch' result='t'/%3E%3CfeColorMatrix in='t' type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+</style>
+</head>
+<body class="bg-ink text-cream font-sans antialiased texture-grain">
+
+<!-- NAV -->
+<header id="nav" class="fixed top-0 left-0 w-full z-50 transition-colors duration-500">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+    <a href="#top" data-nav-id="top" class="font-serif text-2xl tracking-[0.18em] gold-gradient-text">BEAULAX <span class="text-cream/80 text-sm tracking-[0.3em] font-sans align-middle">SPA</span></a>
+    <nav class="hidden lg:flex items-center gap-10 text-xs tracking-[0.2em] uppercase text-cream/70">
+      <a href="#concept" data-nav-id="concept" class="hover:text-gold transition-colors">コンセプト</a>
+      <a href="#strengths" data-nav-id="strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
+      <a href="#menu" data-nav-id="menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#gallery" data-nav-id="gallery" class="hover:text-gold transition-colors">ギャラリー</a>
+      <a href="#voice" data-nav-id="voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#faq" data-nav-id="faq" class="hover:text-gold transition-colors">FAQ</a>
+      <a href="#access" data-nav-id="access" class="hover:text-gold transition-colors">アクセス</a>
+    </nav>
+    <a href="#reserve" class="hidden md:inline-flex items-center gap-2 border border-gold/60 text-gold text-xs tracking-[0.2em] uppercase px-6 py-3 hover:bg-gold hover:text-cream transition-all duration-300">
+      ご予約はこちら
+    </a>
+    <button id="menu-toggle" aria-label="メニューを開く" aria-expanded="false" class="lg:hidden text-gold p-2">
+      <svg id="menu-icon-open" class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      <svg id="menu-icon-close" class="w-7 h-7 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="mobile-menu" class="hidden lg:hidden bg-ink/95 backdrop-blur-md border-t border-gold/10 px-6 py-8">
+    <nav class="flex flex-col gap-6 text-sm tracking-[0.2em] uppercase text-cream/80">
+      <a href="#concept" data-nav-id="concept" class="hover:text-gold transition-colors">コンセプト</a>
+      <a href="#strengths" data-nav-id="strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
+      <a href="#menu" data-nav-id="menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#gallery" data-nav-id="gallery" class="hover:text-gold transition-colors">ギャラリー</a>
+      <a href="#voice" data-nav-id="voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#faq" data-nav-id="faq" class="hover:text-gold transition-colors">FAQ</a>
+      <a href="#access" data-nav-id="access" class="hover:text-gold transition-colors">アクセス</a>
+      <a href="#reserve" data-nav-id="reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-cream px-6 py-4 mt-2">ご予約はこちら</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="top" class="relative h-screen min-h-[640px] w-full overflow-hidden flex items-center justify-center">
+
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2000&auto=format&fit=crop"
+         alt="ラグジュアリーなスパ空間"
+         class="w-full h-full object-cover ken-burns opacity-70">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink/70 via-ink/50 to-ink"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/60 via-transparent to-ink/60"></div>
+  </div>
+
+  <div class="relative z-10 text-center px-6 max-w-3xl">
+    <p class="fade-up text-gold text-xs md:text-sm tracking-[0.4em] uppercase mb-6">Private Facial &amp; Body Salon</p>
+    <h1 class="fade-up font-serif text-4xl md:text-6xl lg:text-7xl leading-[1.15] mb-6">
+      がんばるあなたの<br>
+      <span class="gold-gradient-text italic">心と体をほどく場所</span>
+    </h1>
+    <p class="fade-up text-cream/70 text-sm md:text-base leading-relaxed mb-10 max-w-xl mx-auto">
+      お仕事帰りでもゆったり間に合う、働く女性のための癒しのプライベートサロン。確かな技術と、一人ひとりに寄り添う丁寧な施術。BEAULAX SPAは、「仕事帰りに癒されたい」「遅い時間しか自分の時間が作れない」という忙しい女性のためのサロンです。夜23時まで営業しているので、一日の終わりにいつでもお気軽に羽を伸ばしにいらしてください。
+    </p>
+    <div class="fade-up flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="#reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:bg-gold-light transition-colors duration-300">
+        今すぐ予約する
+      </a>
+      <a href="#menu" class="inline-flex justify-center items-center gap-2 border border-cream/30 text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:border-gold hover:text-gold transition-colors duration-300">
+        メニューを見る
+      </a>
+    </div>
+  </div>
+
+  <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/50">
+    <span class="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+    <span class="w-px h-10 bg-gradient-to-b from-gold to-transparent"></span>
+  </div>
+
+</section>
+
+<!-- TRUST TICKER -->
+<div class="bg-charcoal border-y border-gold/20 py-4 overflow-hidden">
+  <div class="flex whitespace-nowrap ticker">
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">★★★★★ Google クチコミ高評価多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">施術後の変化に感動の声多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">通いやすい完全予約制プライベートサロン</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">★★★★★ Google クチコミ高評価多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">施術後の変化に感動の声多数</span>
+    <span class="mx-8 text-gold/40">/</span>
+    <span class="mx-8 text-cream/60 text-xs tracking-[0.2em] uppercase">通いやすい完全予約制プライベートサロン</span>
+  </div>
+</div>
+
+<!-- CONCEPT -->
+<section id="concept" class="relative py-28 px-6 lg:px-10 bg-ink texture-grain overflow-hidden">
+
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="fade-up relative">
+      <div class="absolute -top-6 -left-6 w-24 h-24 border border-gold/40 z-10 pointer-events-none"></div>
+      <!-- Before/After slider -->
+      <div id="ba-slider" class="relative w-full h-[480px] rounded shadow-xl overflow-hidden select-none cursor-col-resize"
+           data-before="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1400&auto=format&fit=crop"
+           data-after="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=1400&auto=format&fit=crop">
+        <!-- After (base layer) -->
+        <img id="ba-after" src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=1400&auto=format&fit=crop"
+             alt="施術後" class="absolute inset-0 w-full h-full object-cover pointer-events-none">
+        <!-- Before (clipped layer) -->
+        <div id="ba-before-wrap" class="absolute inset-0 overflow-hidden" style="width:50%">
+          <img id="ba-before" src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?q=80&w=1400&auto=format&fit=crop"
+               alt="施術前" class="absolute inset-0 w-full h-full object-cover pointer-events-none" style="width: var(--ba-full-w, 100%); max-width: none;">
+        </div>
+        <!-- Divider line -->
+        <div id="ba-line" class="absolute top-0 bottom-0 w-px bg-white/80 shadow-[0_0_6px_rgba(0,0,0,0.4)]" style="left:50%">
+          <!-- Handle -->
+          <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/90 shadow-lg flex items-center justify-center gap-1">
+            <svg class="w-4 h-4 text-cream/80" viewBox="0 0 16 16" fill="currentColor">
+              <path d="M5 3l-3 5 3 5M11 3l3 5-3 5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Labels -->
+        <span class="absolute top-4 left-4 text-[10px] tracking-[0.25em] uppercase text-white/90 bg-black/30 px-2 py-1 rounded pointer-events-none">Before</span>
+        <span class="absolute top-4 right-4 text-[10px] tracking-[0.25em] uppercase text-white/90 bg-black/30 px-2 py-1 rounded pointer-events-none">After</span>
+      </div>
+      <p class="text-cream/40 text-xs text-center mt-3 tracking-wider">← スライドして比較 →</p>
+    </div>
+    <div class="fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Concept</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl leading-snug mb-6">
+        「自宅から通える距離」に<br>
+        本物の<span class="gold-gradient-text italic">リフトアップ</span>を
+      </h2>
+      <p class="text-cream/70 leading-relaxed mb-6">
+        BEAULAX SPAが大切にしているのは、施術の前と後で「違いに感動できる」結果と、毎回しっかり向き合ってくれる丁寧な接客です。お客様の美容の悩みに真剣に耳を傾け、肌質・お悩みに合わせたオーダーメイドの施術をご提案します。
+      </p>
+      <p class="text-cream/70 leading-relaxed mb-10">
+        一度きりの非日常ではなく、通うたびに肌が応えてくれる――。そんな信頼関係を、私たちは一人ひとりのお客様と築いていきます。
+      </p>
+      <div class="hairline-gold h-px w-24 mb-10"></div>
+      <p class="font-serif italic text-xl text-cream/90">
+        "施術前と施術後の違いに大満足し感動しています。"
+      </p>
+      <p class="text-xs text-cream/40 mt-3 tracking-wider">— Google クチコミより</p>
+    </div>
+  </div>
+
+  <svg class="absolute bottom-0 left-0 w-full" style="height:70px;" viewBox="0 0 1440 70" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,20 C360,70 1080,0 1440,40 L1440,70 L0,70 Z" fill="#F0E4CC"/>
+  </svg>
+</section>
+
+<!-- STRENGTHS -->
+<section id="strengths" class="relative py-28 px-6 lg:px-10 bg-charcoal texture-grain border-t border-gold/10 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Why Beaulax</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl">お客様に長く愛され続ける<br><span style="font-variant-numeric: lining-nums;">4</span>つの理由</h2>
+    </div>
+    <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+      <div class="fade-up lg:col-span-1 relative rounded overflow-hidden shadow-xl min-h-[220px] lg:min-h-0">
+        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=1000&auto=format&fit=crop"
+             alt="リラックスできるボディトリートメントの様子" class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent"></div>
+        <img src="https://images.unsplash.com/photo-1556760544-74068565f05c?q=80&w=600&auto=format&fit=crop"
+             alt="施術ルームに置かれたタオルとオイル" class="absolute bottom-4 right-4 w-20 h-20 md:w-24 md:h-24 object-cover rounded shadow-lg border-2 border-ink/80">
+      </div>
+      <div class="grid md:grid-cols-2 gap-px bg-gold/10 lg:col-span-2">
+        <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+          <span class="font-serif text-5xl text-gold/70">01</span>
+          <h3 class="font-serif text-xl mt-6 mb-3">丁寧な施術力</h3>
+          <p class="text-cream/60 text-sm leading-relaxed">フェイシャルもマッサージも、一人ひとりの肌状態に合わせた丁寧な施術。「とても良いセラピスト」とのお声を多数いただいています。</p>
+        </div>
+        <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+          <span class="font-serif text-5xl text-gold/70">02</span>
+          <h3 class="font-serif text-xl mt-6 mb-3">実感できる変化</h3>
+          <p class="text-cream/60 text-sm leading-relaxed">施術前と施術後で違いに感動するお客様多数。肌のリフトアップを、確かな手技でお届けします。</p>
+        </div>
+        <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+          <span class="font-serif text-5xl text-gold/70">03</span>
+          <h3 class="font-serif text-xl mt-6 mb-3">的確な美容アドバイス</h3>
+          <p class="text-cream/60 text-sm leading-relaxed">お悩みにしっかり寄り添い、自宅でのケア方法までアドバイス。施術だけで終わらない、本気の美容サポート。</p>
+        </div>
+        <div class="fade-up card-glow bg-charcoal p-10 transition-shadow duration-500">
+          <span class="font-serif text-5xl text-gold/70">04</span>
+          <h3 class="font-serif text-xl mt-6 mb-3">通いやすい距離感</h3>
+          <p class="text-cream/60 text-sm leading-relaxed">「自宅から通える距離」にある本格スパ。完全プライベートな空間で、無理なく美容習慣を続けられます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="fade-up mt-16 flex flex-col sm:flex-row sm:divide-x sm:divide-gold/10 text-center">
+      <div class="flex-1 py-6 sm:py-0">
+        <p class="font-serif text-4xl md:text-5xl text-gold">★4.9</p>
+        <p class="text-cream/70 text-[11px] tracking-[0.25em] uppercase mt-3">Google評価</p>
+      </div>
+      <div class="flex-1 py-6 sm:py-0">
+        <p class="font-serif text-4xl md:text-5xl text-gold">1人</p>
+        <p class="text-cream/70 text-[11px] tracking-[0.25em] uppercase mt-3">完全プライベート空間</p>
+      </div>
+      <div class="flex-1 py-6 sm:py-0">
+        <p class="font-serif text-4xl md:text-5xl text-gold">75分</p>
+        <p class="text-cream/70 text-[11px] tracking-[0.25em] uppercase mt-3">じっくり施術コース</p>
+      </div>
+      <div class="flex-1 py-6 sm:py-0">
+        <p class="font-serif text-4xl md:text-5xl text-gold">9-23時</p>
+        <p class="text-cream/70 text-[11px] tracking-[0.25em] uppercase mt-3">営業時間</p>
+      </div>
+    </div>
+  </div>
+
+  <svg class="absolute bottom-0 left-0 w-full" style="height:64px;" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,40 C480,-10 960,90 1440,15 L1440,64 L0,64 Z" fill="#FAF3E4"/>
+  </svg>
+</section>
+
+<!-- MENU -->
+<section id="menu" class="relative py-28 px-6 lg:px-10 bg-ink texture-grain overflow-hidden">
+
+  <svg class="corner-frame top-6 left-6" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M2 48V2H48"/>
+  </svg>
+  <svg class="corner-frame bottom-6 right-6" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M46 0V46H0"/>
+  </svg>
+
+  <div class="max-w-5xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Menu</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl">あなたの「なりたい姿」へ<br>導くメニュー</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-16">
+
+      <div class="fade-up">
+        <h3 class="font-serif text-2xl text-gold mb-1">Facial</h3>
+        <p class="text-cream/40 text-xs tracking-[0.2em] uppercase mb-6">フェイシャル</p>
+        <ul class="divide-y divide-gold/10">
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Photo Facial<span class="text-cream/40 text-xs"> / フォトフェイシャル</span></span>
+              <span class="text-cream/40 text-xs">40分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥7,700</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">RF Facial<span class="text-cream/40 text-xs"> / ラジオ波フェイシャル</span></span>
+              <span class="text-cream/40 text-xs">45分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥6,600</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="inline-flex items-center gap-2">
+                <span class="block text-cream/90">Special Facial Treatment<span class="text-cream/40 text-xs"> / スペシャルフェイシャルトリートメント</span></span>
+                <span class="bg-gold text-cream text-[9px] tracking-[0.2em] uppercase px-2 py-0.5 shrink-0">人気</span>
+              </span>
+              <span class="block text-cream/40 text-xs">75分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥8,800</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="fade-up">
+        <h3 class="font-serif text-2xl text-gold mb-1">Body</h3>
+        <p class="text-cream/40 text-xs tracking-[0.2em] uppercase mb-6">ボディ</p>
+        <ul class="divide-y divide-gold/10">
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Aroma Oil Body Treatment<span class="text-cream/40 text-xs"> / 全身アロマボディートリートメント</span></span>
+              <span class="text-cream/40 text-xs">60分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥6,600</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Cavitation &amp; Sculpting<span class="text-cream/40 text-xs"> / キャビテーション&amp;脂肪吸引</span></span>
+              <span class="text-cream/40 text-xs">40分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥7,700</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Beauty Legs Course<span class="text-cream/40 text-xs"> / 美脚コース</span></span>
+              <span class="text-cream/40 text-xs">40分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥8,800</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Barbie Arm<span class="text-cream/40 text-xs"> / 二の腕キャビテーション</span></span>
+              <span class="text-cream/40 text-xs">30分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥5,500</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Back Aroma Scrub Treatment<span class="text-cream/40 text-xs"> / 背中美人</span></span>
+              <span class="text-cream/40 text-xs">30分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥3,500</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Back Only<span class="text-cream/40 text-xs"> / 背中のみ</span></span>
+              <span class="text-cream/40 text-xs">30分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥3,300</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Under Arm Hair Removal &amp; Whitening<span class="text-cream/40 text-xs"> / 脇脱毛&amp;美白ケア</span></span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥3,500</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="fade-up">
+        <h3 class="font-serif text-2xl text-gold mb-1">Foot &amp; Nail</h3>
+        <p class="text-cream/40 text-xs tracking-[0.2em] uppercase mb-6">フット&amp;ネイル</p>
+        <ul class="divide-y divide-gold/10">
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Beaulax Foot Spa<span class="text-cream/40 text-xs"> / フット角質ケア贅沢コース</span></span>
+              <span class="text-cream/40 text-xs">45分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥7,700</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">Men's Foot Spa<span class="text-cream/40 text-xs"> / フット角質ケア贅沢コース（メンズ）</span></span>
+              <span class="text-cream/40 text-xs">45分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥8,800</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span class="block text-cream/90">Gel Nail<span class="text-cream/40 text-xs"> / ジェルネイル</span></span>
+            <span class="font-serif text-xl text-gold shrink-0">¥3,500</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="fade-up">
+        <h3 class="font-serif text-2xl text-gold mb-1">Option</h3>
+        <p class="text-cream/40 text-xs tracking-[0.2em] uppercase mb-6">オプション（ラジオ波追加メニュー）</p>
+        <ul class="divide-y divide-gold/10">
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">RF 肩&amp;肩甲骨のみ</span>
+              <span class="text-cream/40 text-xs">10分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥2,200</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">RF デコルテ</span>
+              <span class="text-cream/40 text-xs">5分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥1,100</span>
+          </li>
+          <li class="py-4 flex items-baseline justify-between gap-4">
+            <span>
+              <span class="block text-cream/90">RF 首</span>
+              <span class="text-cream/40 text-xs">5分</span>
+            </span>
+            <span class="font-serif text-xl text-gold shrink-0">¥1,100</span>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <p class="fade-up text-center text-cream/40 text-xs mt-16 tracking-wider">表示価格はすべて税込です。オプションは各メニューと組み合わせてご利用いただけます。</p>
+  </div>
+
+  <svg class="absolute bottom-0 left-0 w-full" style="height:60px;" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,30 C240,0 720,55 1440,10 L1440,60 L0,60 Z" fill="#F0E4CC"/>
+  </svg>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="relative py-28 px-6 lg:px-10 bg-charcoal texture-grain border-t border-gold/10 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Gallery</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl">空間とお肌の変化をご覧ください</h2>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=800&auto=format&fit=crop" alt="サロン内観" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1519415510236-718bdfcd89c1?q=80&w=800&auto=format&fit=crop" alt="フェイシャル施術" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop" alt="施術後の肌" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?q=80&w=800&auto=format&fit=crop" alt="プライベート個室" class="fade-up w-full h-64 object-cover hover:opacity-80 transition-opacity duration-500">
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section id="voice" class="relative py-28 px-6 lg:px-10 bg-charcoal texture-grain border-t border-gold/10 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Voice</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl">お客様からの声</h2>
+      <p class="text-cream/50 text-sm mt-4">Google クチコミより</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「フェイシャル、マッサージとても丁寧に施術してくれて毎回満足しています。美容の悩みもしっかりアドバイスしてくれます。とても良いセラピストです。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">zandra nakamura様</p>
+      </div>
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「フェイシャル2回目ですが、施術前と施術後の違いに大満足し感動しています。お肌のリフトアップが自宅から通える距離にあるなんて。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">M123 “123”様・ローカルガイド</p>
+      </div>
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「サービスも丁寧で安心して通えるサロンです。スタッフの方の対応にいつも感謝しています。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">織間春奈様</p>
+      </div>
+      <div class="fade-up bg-ink/60 border border-gold/10 p-8">
+        <div class="text-gold mb-4 text-sm">★★★★★</div>
+        <p class="text-cream/70 text-sm leading-relaxed mb-6">「345枚もの写真を残したくなるほど、毎回の変化が楽しみなサロンです。いつもありがとうございます。」</p>
+        <p class="text-xs text-cream/40 tracking-wider">M Nao様・ローカルガイド</p>
+      </div>
+    </div>
+
+    <div class="fade-up mt-12 text-center">
+      <span class="inline-flex items-center gap-2 text-gold text-sm tracking-wider">
+        <span class="text-lg">★★★★★</span> Google クチコミ高評価多数獲得中
+      </span>
+    </div>
+  </div>
+
+  <svg class="absolute bottom-0 left-0 w-full" style="height:60px;" viewBox="0 0 1440 60" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,55 C300,5 1140,5 1440,50 L1440,60 L0,60 Z" fill="#FAF3E4"/>
+  </svg>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="relative py-28 px-6 lg:px-10 bg-ink texture-grain overflow-hidden">
+
+  <div class="max-w-3xl mx-auto">
+    <div class="text-center mb-16 fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">FAQ</p>
+      <div class="heading-ornament">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+        <span class="hairline-gold h-px"></span>
+      </div>
+      <h2 class="font-serif text-3xl md:text-4xl">よくあるご質問</h2>
+    </div>
+    <div class="space-y-px bg-gold/10">
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          初めてでも安心して通えますか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">はい。初回はカウンセリングからじっくり行い、お肌の状態やお悩みをお伺いした上で施術プランをご提案します。不安な点はその場で何でもご相談ください。</p>
+      </details>
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          どのくらいの頻度で通うのが理想ですか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">肌の生まれ変わるサイクルに合わせ、3〜4週に1度のご来店がおすすめです。お悩みやご予算に合わせて最適なペースをご提案します。</p>
+      </details>
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          施術後に気を付けることはありますか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">施術直後はお肌が敏感な状態になるため、当日は紫外線対策と保湿を徹底してください。アフターケアの方法も施術後に詳しくご説明します。</p>
+      </details>
+      <details class="fade-up group bg-ink open:bg-charcoal/40">
+        <summary class="cursor-pointer list-none flex items-center justify-between py-6 px-2 text-cream/90 font-serif text-lg">
+          予約の変更・キャンセルはできますか？
+          <span class="text-gold text-xl group-open:rotate-45 transition-transform duration-300">+</span>
+        </summary>
+        <p class="text-cream/60 text-sm leading-relaxed px-2 pb-6">ご予約の2日前までであれば、お電話・LINEにて無料で変更・キャンセルが可能です。それ以降の変更は別途キャンセルポリシーが適用されますのでご了承ください。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- RESERVE / CTA -->
+<section id="reserve" class="relative py-32 px-6 lg:px-10 overflow-hidden">
+
+  <svg class="corner-frame top-8 left-8 z-10" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M2 48V2H48"/>
+  </svg>
+  <svg class="corner-frame bottom-8 right-8 z-10" viewBox="0 0 48 48" fill="none" stroke="#AD8A52" stroke-width="1">
+    <path d="M46 0V46H0"/>
+  </svg>
+
+  <div class="absolute inset-0">
+    <img src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?q=80&w=2000&auto=format&fit=crop"
+         alt="プライベート個室" class="w-full h-full object-cover opacity-40">
+    <div class="absolute inset-0 bg-gradient-to-b from-ink via-ink/80 to-ink"></div>
+  </div>
+  <div class="relative z-10 max-w-3xl mx-auto text-center fade-up">
+    <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Reservation</p>
+    <div class="heading-ornament">
+      <span class="hairline-gold h-px"></span>
+      <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+      <span class="hairline-gold h-px"></span>
+    </div>
+    <h2 class="font-serif text-3xl md:text-5xl mb-6 leading-snug">
+      今日は誰のためでもない<br>「自分のための<span style="font-variant-numeric: lining-nums;">1</span>時間」
+    </h2>
+    <p class="text-cream/70 mb-10 leading-relaxed">
+      完全予約制のプライベートサロンです。ご希望のお時間が埋まりやすいため、お早めのご予約をお勧めします。初めての方には無料カウンセリングもご用意しております。
+    </p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+      <a href="tel:09089424126" class="inline-flex justify-center items-center gap-2 bg-gold text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:bg-gold-light transition-colors duration-300">
+        電話で予約する（090-8942-4126）
+      </a>
+      <a href="https://line.me/R/ti/p/%40922ovypd" target="_blank" rel="noopener" class="inline-flex justify-center items-center gap-2 border border-cream/30 text-cream text-xs tracking-[0.2em] uppercase px-10 py-4 hover:border-gold hover:text-gold transition-colors duration-300">
+        LINEで予約する
+      </a>
+    </div>
+    <p class="text-cream/40 text-xs tracking-wider">営業時間 9:00 - 23:00｜完全予約制</p>
+  </div>
+</section>
+
+<!-- ACCESS -->
+<section id="access" class="relative py-24 px-6 lg:px-10 bg-charcoal texture-grain border-t border-gold/10 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12">
+    <div class="fade-up">
+      <p class="text-gold text-xs tracking-[0.4em] uppercase mb-4">Access</p>
+      <div class="heading-ornament" style="justify-content: flex-start; margin-bottom: 12px;">
+        <span class="hairline-gold h-px"></span>
+        <svg class="w-2.5 h-2.5 text-gold" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="0.75"><path d="M5 0L10 5L5 10L0 5Z"/></svg>
+      </div>
+      <h2 class="font-serif text-3xl mb-8">BEAULAX SPA</h2>
+      <dl class="space-y-6 text-sm text-cream/70">
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">所在地</dt>
+          <dd>〒125-0031<br>東京都葛飾区西水元2-17-12<br><span class="text-cream/40 text-xs">Tokyo Katsushika-ku, Nishimizumoto 2-17-12</span></dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">営業時間</dt>
+          <dd>9:00 - 23:00</dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">電話番号</dt>
+          <dd><a href="tel:09089424126" class="text-gold hover:text-gold-light transition-colors underline underline-offset-4">090-8942-4126</a></dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">予約</dt>
+          <dd>完全予約制（お電話・LINE・Instagramより受付）</dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">LINE</dt>
+          <dd><a href="https://line.me/R/ti/p/%40922ovypd" target="_blank" rel="noopener" class="text-gold hover:text-gold-light transition-colors underline underline-offset-4">@922ovypd</a></dd>
+        </div>
+        <div class="flex gap-6">
+          <dt class="w-20 text-gold/80 tracking-wider shrink-0">Instagram</dt>
+          <dd><a href="https://www.instagram.com/beaulax.spa/" target="_blank" rel="noopener" class="text-gold hover:text-gold-light transition-colors underline underline-offset-4">@beaulax.spa</a></dd>
+        </div>
+      </dl>
+    </div>
+    <div class="fade-up h-72 lg:h-auto border border-gold/10 overflow-hidden grayscale-[0.3] contrast-125">
+      <iframe
+        title="BEAULAX SPA 地図"
+        src="https://www.google.com/maps?q=%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%91%9B%E9%A3%BE%E5%8C%BA%E8%A5%BF%E6%B0%B4%E5%85%832-17-12&output=embed"
+        class="w-full h-full border-0"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+
+  <svg class="absolute bottom-0 left-0 w-full" style="height:56px;" viewBox="0 0 1440 56" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,10 C480,56 960,-6 1440,28 L1440,56 L0,56 Z" fill="#FAF3E4"/>
+  </svg>
+</section>
+
+<!-- FOOTER -->
+<footer class="relative bg-ink texture-grain border-t border-gold/10 py-12 px-6 lg:px-10 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+    <a href="#top" class="font-serif text-xl tracking-[0.18em] gold-gradient-text">BEAULAX SPA</a>
+    <a href="https://www.instagram.com/beaulax.spa/" target="_blank" rel="noopener" aria-label="Instagram" class="text-cream/50 hover:text-gold transition-colors">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="18" height="18" rx="5" stroke-width="1.5"/>
+        <circle cx="12" cy="12" r="4" stroke-width="1.5"/>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+      </svg>
+    </a>
+    <p class="text-cream/40 text-xs tracking-wider">&copy; 2026 BEAULAX SPA. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) {
+      nav.classList.add('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
+    } else {
+      nav.classList.remove('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
+    }
+  });
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconOpen = document.getElementById('menu-icon-open');
+  const iconClose = document.getElementById('menu-icon-close');
+  menuToggle.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    iconOpen.classList.toggle('hidden');
+    iconClose.classList.toggle('hidden');
+    menuToggle.setAttribute('aria-expanded', String(!isOpen));
+  });
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // ── Before/After slider ───────────────────────────────────────────
+  (function () {
+    const slider = document.getElementById('ba-slider');
+    if (!slider) return;
+    const beforeWrap = document.getElementById('ba-before-wrap');
+    const beforeImg  = document.getElementById('ba-before');
+    const line       = document.getElementById('ba-line');
+
+    function setPos(pct) {
+      pct = Math.max(2, Math.min(98, pct));
+      beforeWrap.style.width = pct + '%';
+      line.style.left = pct + '%';
+      // Keep before image full-width inside the clipped wrapper
+      beforeImg.style.width = (slider.offsetWidth / (pct / 100)) + 'px';
+    }
+
+    function getPercent(clientX) {
+      const rect = slider.getBoundingClientRect();
+      return ((clientX - rect.left) / rect.width) * 100;
+    }
+
+    let dragging = false;
+    slider.addEventListener('mousedown', e => { dragging = true; setPos(getPercent(e.clientX)); });
+    window.addEventListener('mousemove', e => { if (dragging) setPos(getPercent(e.clientX)); });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    slider.addEventListener('touchstart', e => { dragging = true; setPos(getPercent(e.touches[0].clientX)); }, { passive: true });
+    window.addEventListener('touchmove', e => { if (dragging) setPos(getPercent(e.touches[0].clientX)); }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+
+    // Init after layout
+    window.addEventListener('load', () => setPos(50));
+    window.addEventListener('resize', () => setPos(parseFloat(line.style.left) || 50));
+  })();
+</script>
+</body>
+</html>
