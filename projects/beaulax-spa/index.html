@@ -106,15 +106,15 @@
 <!-- NAV -->
 <header id="nav" class="fixed top-0 left-0 w-full z-50 transition-colors duration-500">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
-    <a href="#top" class="font-serif text-2xl tracking-[0.18em] gold-gradient-text">BEAULAX <span class="text-cream/80 text-sm tracking-[0.3em] font-sans align-middle">SPA</span></a>
+    <a href="#top" data-nav-id="top" class="font-serif text-2xl tracking-[0.18em] gold-gradient-text">BEAULAX <span class="text-cream/80 text-sm tracking-[0.3em] font-sans align-middle">SPA</span></a>
     <nav class="hidden lg:flex items-center gap-10 text-xs tracking-[0.2em] uppercase text-cream/70">
-      <a href="#concept" class="hover:text-gold transition-colors">コンセプト</a>
-      <a href="#strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
-      <a href="#menu" class="hover:text-gold transition-colors">メニュー</a>
-      <a href="#gallery" class="hover:text-gold transition-colors">ギャラリー</a>
-      <a href="#voice" class="hover:text-gold transition-colors">お客様の声</a>
-      <a href="#faq" class="hover:text-gold transition-colors">FAQ</a>
-      <a href="#access" class="hover:text-gold transition-colors">アクセス</a>
+      <a href="#concept" data-nav-id="concept" class="hover:text-gold transition-colors">コンセプト</a>
+      <a href="#strengths" data-nav-id="strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
+      <a href="#menu" data-nav-id="menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#gallery" data-nav-id="gallery" class="hover:text-gold transition-colors">ギャラリー</a>
+      <a href="#voice" data-nav-id="voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#faq" data-nav-id="faq" class="hover:text-gold transition-colors">FAQ</a>
+      <a href="#access" data-nav-id="access" class="hover:text-gold transition-colors">アクセス</a>
     </nav>
     <a href="#reserve" class="hidden md:inline-flex items-center gap-2 border border-gold/60 text-gold text-xs tracking-[0.2em] uppercase px-6 py-3 hover:bg-gold hover:text-cream transition-all duration-300">
       ご予約はこちら
@@ -126,14 +126,14 @@
   </div>
   <div id="mobile-menu" class="hidden lg:hidden bg-ink/95 backdrop-blur-md border-t border-gold/10 px-6 py-8">
     <nav class="flex flex-col gap-6 text-sm tracking-[0.2em] uppercase text-cream/80">
-      <a href="#concept" class="hover:text-gold transition-colors">コンセプト</a>
-      <a href="#strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
-      <a href="#menu" class="hover:text-gold transition-colors">メニュー</a>
-      <a href="#gallery" class="hover:text-gold transition-colors">ギャラリー</a>
-      <a href="#voice" class="hover:text-gold transition-colors">お客様の声</a>
-      <a href="#faq" class="hover:text-gold transition-colors">FAQ</a>
-      <a href="#access" class="hover:text-gold transition-colors">アクセス</a>
-      <a href="#reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-cream px-6 py-4 mt-2">ご予約はこちら</a>
+      <a href="#concept" data-nav-id="concept" class="hover:text-gold transition-colors">コンセプト</a>
+      <a href="#strengths" data-nav-id="strengths" class="hover:text-gold transition-colors">選ばれる理由</a>
+      <a href="#menu" data-nav-id="menu" class="hover:text-gold transition-colors">メニュー</a>
+      <a href="#gallery" data-nav-id="gallery" class="hover:text-gold transition-colors">ギャラリー</a>
+      <a href="#voice" data-nav-id="voice" class="hover:text-gold transition-colors">お客様の声</a>
+      <a href="#faq" data-nav-id="faq" class="hover:text-gold transition-colors">FAQ</a>
+      <a href="#access" data-nav-id="access" class="hover:text-gold transition-colors">アクセス</a>
+      <a href="#reserve" data-nav-id="reserve" class="inline-flex justify-center items-center gap-2 bg-gold text-cream px-6 py-4 mt-2">ご予約はこちら</a>
     </nav>
   </div>
 </header>
@@ -703,17 +703,62 @@
 </footer>
 
 <script>
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+  // ── Page routing ──────────────────────────────────────────────────
+  const PAGES = ['top','concept','strengths','menu','gallery','voice','faq','reserve','access'];
+  const allSections = PAGES.map(id => document.getElementById(id)).filter(Boolean);
+  const footer = document.querySelector('footer');
 
+  function showPage(id) {
+    const target = PAGES.includes(id) ? id : 'top';
+    allSections.forEach(sec => {
+      const active = sec.id === target;
+      sec.style.display = active ? '' : 'none';
+    });
+    footer.style.display = (target === 'access' || target === 'top') ? '' : 'none';
+    // Re-trigger fade-up for newly shown section
+    const sec = document.getElementById(target);
+    if (sec) {
+      sec.querySelectorAll('.fade-up:not(.in-view)').forEach(el => observer.observe(el));
+    }
+    window.scrollTo(0, 0);
+    // Nav background: always solid when not on top
+    if (target !== 'top') {
+      nav.classList.add('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
+    } else {
+      nav.classList.remove('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
+    }
+    // Update active link highlight
+    document.querySelectorAll('[data-nav-id]').forEach(a => {
+      a.classList.toggle('text-gold', a.dataset.navId === target);
+      a.classList.toggle('text-cream/70', a.dataset.navId !== target);
+    });
+    // Update URL hash without triggering scroll
+    history.replaceState(null, '', target === 'top' ? '#' : '#' + target);
+  }
+
+  // Intercept all internal anchor clicks
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href').replace('#', '') || 'top';
+    if (PAGES.includes(id)) {
+      e.preventDefault();
+      showPage(id);
+      closeMobileMenu();
+    }
+  });
+
+  // Handle browser back/forward
+  window.addEventListener('hashchange', () => {
+    const id = location.hash.replace('#', '') || 'top';
+    showPage(id);
+  });
+
+  // ── Scroll-based nav background (top page only) ───────────────────
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
+    const currentPage = location.hash.replace('#', '') || 'top';
+    if (currentPage !== 'top') return;
     if (window.scrollY > 40) {
       nav.classList.add('bg-ink/90', 'backdrop-blur-md', 'border-b', 'border-gold/10');
     } else {
@@ -721,10 +766,27 @@
     }
   });
 
+  // ── Fade-up observer ──────────────────────────────────────────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('in-view');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.fade-up').forEach((el) => observer.observe(el));
+
+  // ── Mobile menu toggle ────────────────────────────────────────────
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const iconOpen = document.getElementById('menu-icon-open');
   const iconClose = document.getElementById('menu-icon-close');
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    iconOpen.classList.remove('hidden');
+    iconClose.classList.add('hidden');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+
   menuToggle.addEventListener('click', () => {
     const isOpen = !mobileMenu.classList.contains('hidden');
     mobileMenu.classList.toggle('hidden');
@@ -732,14 +794,9 @@
     iconClose.classList.toggle('hidden');
     menuToggle.setAttribute('aria-expanded', String(!isOpen));
   });
-  mobileMenu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', () => {
-      mobileMenu.classList.add('hidden');
-      iconOpen.classList.remove('hidden');
-      iconClose.classList.add('hidden');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+
+  // ── Initial render ────────────────────────────────────────────────
+  showPage(location.hash.replace('#', '') || 'top');
 </script>
 </body>
 </html>
